@@ -37,6 +37,8 @@ class HashTable:
                     self.table[key_hash].pop(index)
                     return True
         return False
+    
+# тест
 
 H = HashTable(5)
 H.insert("apple", 10)
@@ -47,7 +49,7 @@ print(H.get("apple"))
 print(H.get("orange"))  
 print(H.get("banana")) 
 
-H.delete("orange")
+H.delete("banana")
 
 print(H.get("apple"))   
 print(H.get("orange")) 

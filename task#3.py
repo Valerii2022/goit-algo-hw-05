@@ -1,7 +1,6 @@
 import timeit
-import random
 
-# Реалізація алгоритму Бойєра-Мура
+# Алгоритм Бойєра-Мура
 def boyer_moore(text, pattern):
     m = len(pattern)
     n = len(text)
@@ -24,7 +23,7 @@ def boyer_moore(text, pattern):
             k = m - 1
     return -1
 
-# Реалізація алгоритму Кнута-Морріса-Пратта
+# Алгоритму Кнута-Морріса-Пратта
 def knuth_morris_pratt(text, pattern):
     m = len(pattern)
     n = len(text)
@@ -61,7 +60,7 @@ def computeLPSArray(pattern, m, lps):
                 lps[i] = 0
                 i += 1
 
-# Реалізація алгоритму Рабіна-Карпа
+# Алгоритму Рабіна-Карпа
 def rabin_karp(text, pattern):
     d = 256
     q = 101
@@ -91,7 +90,7 @@ def rabin_karp(text, pattern):
                 t = t + q
     return -1
 
-# Читання текстових файлів
+# Читання файлів
 with open('article1.txt', 'r', encoding='utf-8') as file:
     text1 = file.read()
 
@@ -99,11 +98,11 @@ with open('article2.txt', 'r', encoding='utf-8') as file:
     text2 = file.read()
 
 # Вибір підрядків для тестування
-substring_exists1 = text1[:50]  # Перші 50 символів статті 1
-substring_not_exists1 = 'notinhere'  # Вигаданий підрядок для статті 1
+substring_exists1 = 'реалізації відомих алгоритмів' 
+substring_not_exists1 = 'some text from anywhere' 
 
-substring_exists2 = text2[:50]  # Перші 50 символів статті 2
-substring_not_exists2 = 'notinhere'  # Вигаданий підрядок для статті 2
+substring_exists2 = 'використано колаборативну фільтрацію' 
+substring_not_exists2 = 'some text from anywhere'  
 
 # Вимірювання часу виконання кожного алгоритму
 def measure_time(algorithm, text, pattern):
@@ -128,22 +127,22 @@ time_knuth_morris_pratt_not_exist2 = measure_time(knuth_morris_pratt, text2, sub
 time_rabin_karp_not_exist2 = measure_time(rabin_karp, text2, substring_not_exists2)
 
 # Результати
-print(f"Article 1 - Existing substring:")
+print(f"Стаття 1 - підрядок існує в тексті:")
 print(f"Boyer-Moore: {time_boyer_moore_exist1}")
 print(f"Knuth-Morris-Pratt: {time_knuth_morris_pratt_exist1}")
 print(f"Rabin-Karp: {time_rabin_karp_exist1}")
 
-print(f"Article 1 - Non-existing substring:")
+print(f"Стаття 1 - вигаданий підрядок:")
 print(f"Boyer-Moore: {time_boyer_moore_not_exist1}")
 print(f"Knuth-Morris-Pratt: {time_knuth_morris_pratt_not_exist1}")
 print(f"Rabin-Karp: {time_rabin_karp_not_exist1}")
 
-print(f"Article 2 - Existing substring:")
+print(f"Стаття 2 - підрядок існує в тексті:")
 print(f"Boyer-Moore: {time_boyer_moore_exist2}")
 print(f"Knuth-Morris-Pratt: {time_knuth_morris_pratt_exist2}")
 print(f"Rabin-Karp: {time_rabin_karp_exist2}")
 
-print(f"Article 2 - Non-existing substring:")
+print(f"Стаття 2 - вигаданий підрядок:")
 print(f"Boyer-Moore: {time_boyer_moore_not_exist2}")
 print(f"Knuth-Morris-Pratt: {time_knuth_morris_pratt_not_exist2}")
 print(f"Rabin-Karp: {time_rabin_karp_not_exist2}")
@@ -176,7 +175,7 @@ fastest_not_exist2 = find_fastest([
     ("Rabin-Karp", time_rabin_karp_not_exist2)
 ])
 
-print(f"Fastest for Article 1 - Existing substring: {fastest_exist1}")
-print(f"Fastest for Article 1 - Non-existing substring: {fastest_not_exist1}")
-print(f"Fastest for Article 2 - Existing substring: {fastest_exist2}")
-print(f"Fastest for Article 2 - Non-existing substring: {fastest_not_exist2}")
+print(f"Найшвидший для статті 1 - підрядок існує в тексті: {fastest_exist1}")
+print(f"Найшвидший для статті 1 - вигаданий підрядок: {fastest_not_exist1}")
+print(f"Найшвидший для статті 2 - підрядок існує в тексті: {fastest_exist2}")
+print(f"Найшвидший для статті 2 - вигаданий підрядок: {fastest_not_exist2}")
